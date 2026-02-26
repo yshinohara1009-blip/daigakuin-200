@@ -3,150 +3,109 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>大学院(200%)｜競艇研究室</title>
-<meta name="description" content="予想ではなく、検証。展開・モーター・コースデータで勝ち筋だけを抽出する。">
+<title>大学院(200%)｜競艇解析</title>
 
 <style>
-:root{
-  --bg:#f6f6f6;
-  --fg:#111;
-  --muted:#6b6b6b;
-  --line:#e6e6e6;
-}
-*{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Noto Sans JP",sans-serif;
-  background:var(--bg);
-  color:var(--fg);
-  letter-spacing:.04em;
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+background:#f6f6f6;
+color:#111;
+letter-spacing:.04em;
 }
+
 .container{
-  max-width:760px;
-  margin:auto;
-  padding:44px 20px 90px;
+max-width:760px;
+margin:auto;
+padding:60px 20px 100px;
 }
-.hero{
-  padding:12px 0 34px;
-  border-bottom:1px solid var(--line);
-}
-.kicker{
-  font-size:12px;
-  letter-spacing:.28em;
-  color:var(--muted);
-}
+
 h1{
-  font-size:34px;
-  font-weight:500;
-  letter-spacing:.08em;
-  margin:16px 0 6px;
+font-size:34px;
+font-weight:500;
+letter-spacing:.08em;
+margin-bottom:10px;
 }
+
 .sub{
-  color:var(--muted);
-  margin:0 0 22px;
+color:#666;
+margin-bottom:40px;
 }
-.lead{
-  line-height:1.9;
-  color:#222;
-  margin:0 0 18px;
+
+p{
+line-height:1.9;
+color:#222;
+font-size:15px;
 }
-.cta{
-  display:inline-block;
-  margin-top:18px;
-  padding:16px 28px;
-  border:1px solid var(--fg);
-  text-decoration:none;
-  color:var(--fg);
-  transition:.18s;
-}
-.cta:active, .cta:hover{
-  background:var(--fg);
-  color:#fff;
-}
-.note{
-  margin-top:10px;
-  font-size:12px;
-  color:var(--muted);
-}
+
 .section{
-  margin:52px 0;
+margin:60px 0;
 }
+
 .section-title{
-  font-size:12px;
-  letter-spacing:.30em;
-  color:var(--muted);
-  margin:0 0 16px;
+font-size:13px;
+letter-spacing:.25em;
+color:#777;
+margin-bottom:20px;
 }
-.block{
-  padding:18px 18px;
-  background:#fff;
-  border:1px solid var(--line);
+
+.cta{
+display:inline-block;
+margin-top:40px;
+padding:18px 34px;
+border:1px solid #111;
+text-decoration:none;
+color:#111;
+font-size:14px;
+transition:.2s;
 }
-.block p{
-  margin:0;
-  line-height:2.0;
-  color:#222;
-}
-.footer{
-  margin-top:48px;
-  padding-top:22px;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.8;
+
+.cta:hover{
+background:#111;
+color:#fff;
 }
 </style>
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
 
-    <div class="hero">
-      <div class="kicker">BOAT RACE ANALYSIS LAB.</div>
-      <h1>大学院(200%)｜競艇研究室</h1>
-      <p class="sub">予想ではなく、検証。</p>
+<h1>大学院(200%)｜競艇解析</h1>
+<div class="sub">予想ではなく、検証。</div>
 
-      <p class="lead">
-        展開・モーター・コースデータから<br>
-        「勝ち筋だけ」を抽出する。
-      </p>
+<p>
+展開・モーター・コースデータから<br>
+「勝ち筋だけ」を抽出する。
+</p>
 
-      <a class="cta" href="OPENCHAT_URL">研究室に入室（ENTER THE LAB）</a>
-      <div class="note">参加無料｜匿名OK｜通知OFF推奨</div>
-    </div>
+<a class="cta" href="https://line.me/ti/g2/CUe1ttnHasebosnZSBAFF0NIk2g6tc5Q_zKSJw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">
+オープンチャットへ参加する
+</a>
 
-    <div class="section">
-      <div class="section-title">SYLLABUS</div>
-      <div class="block">
-        <p>
-          I. 展開モデル（逃げ/差し/まくり/まくり差しの成立条件）<br>
-          II. モーター評価（数字ではなく出足・伸び・回り足）<br>
-          III. コース期待値（相手関係から確率を組み直す）<br>
-          IV. 資金配分（点数ではなく「厚みの理由」を作る）<br>
-          ゼミ：レース後検証（当たり外れより仮説の検証）
-        </p>
-      </div>
-    </div>
+<div class="section">
+<div class="section-title">SYLLABUS</div>
+<p>
+展開モデルの分解。<br>
+モーター挙動の評価。<br>
+コース期待値の再構築。<br>
+資金配分ロジックの設計。
+</p>
+</div>
 
-    <div class="section">
-      <div class="section-title">METHODOLOGY</div>
-      <div class="block">
-        <p>
-          ・直前気配に依存しない<br>
-          ・説明できる舟券だけを残す<br>
-          ・外れたレースほど検証価値がある<br>
-          ・感覚を排除し、再現性を優先する
-        </p>
-      </div>
-    </div>
+<div class="section">
+<div class="section-title">METHODOLOGY</div>
+<p>
+直前気配に依存しない。<br>
+説明できる舟券だけを残す。<br>
+外れたレースほど検証する。<br>
+感覚ではなく再現性を優先。
+</p>
+</div>
 
-    <a class="cta" href="OPENCHAT_URL">研究室に入室</a>
+<p style="margin-top:80px;color:#666;font-size:14px;">
+短期の当たりより、長期の優位性。
+</p>
 
-    <div class="footer">
-      ここは予想配信ではありません。<br>
-      舟券を配る場所ではなく、舟券の組み立て方を研究する場所です。
-    </div>
-
-  </div>
+</div>
 </body>
 </html>
