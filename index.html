@@ -2,182 +2,1845 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>大学院(200%)｜競艇解析</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>大学院(200%)｜競艇好きが集まるオープンチャット</title>
+
+<meta
+  name="description"
+  content="大学院(200%)は、競艇好きが気軽に集まってレースや予想を楽しめるオープンチャットです。見るだけでも、話すだけでも、初心者でもOK。"
+>
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
---bg:#f4f4f4;
---text:#111;
---muted:#8a8a8a;
---line:#e5e5e5;
+  --bg:#f6f8fb;
+  --surface:#ffffff;
+  --surface-soft:#f0f5ff;
+
+  --text:#111827;
+  --text-soft:#4b5563;
+  --muted:#8b95a5;
+
+  --line:#e7ebf1;
+
+  --blue:#2563eb;
+  --blue-dark:#174bb8;
+  --blue-soft:#eaf2ff;
+
+  --green:#16a34a;
+
+  --shadow:
+    0 18px 50px rgba(17,24,39,.07);
+
+  --shadow-soft:
+    0 8px 24px rgba(17,24,39,.045);
+
+  --radius-xl:30px;
+  --radius-lg:24px;
+  --radius-md:18px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-background:var(--bg);
-color:var(--text);
-font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
-letter-spacing:.04em;
--webkit-font-smoothing:antialiased;
+  margin:0;
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(37,99,235,.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 100% 16%,
+      rgba(96,165,250,.08),
+      transparent 27%
+    ),
+    var(--bg);
+
+  color:var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    "Yu Gothic",
+    YuGothic,
+    sans-serif;
+
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+a{
+  color:inherit;
+}
+
+button,
+a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+  width:100%;
+  overflow:hidden;
 }
 
 .container{
-max-width:760px;
-margin:0 auto;
-padding:90px 22px 120px;
+  width:min(100%, 760px);
+  margin:0 auto;
+  padding:
+    max(24px, env(safe-area-inset-top))
+    20px
+    calc(90px + env(safe-area-inset-bottom));
 }
 
-.eyebrow{
-font-size:11px;
-letter-spacing:.45em;
-color:#9a9a9a;
-text-transform:uppercase;
-margin-bottom:28px;
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:54px;
 }
 
-h1{
-font-size:50px;
-font-weight:800;
-letter-spacing:.06em;
-line-height:1.15;
-margin:0 0 20px;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.05em;
 }
 
-.sub{
-font-size:19px;
-color:#666;
-margin-bottom:48px;
-letter-spacing:.06em;
+.brandMark{
+  position:relative;
+
+  width:34px;
+  height:34px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111827,
+      #253044
+    );
+
+  box-shadow:
+    0 8px 20px rgba(17,24,39,.14);
 }
 
-.lead{
-font-size:18px;
-line-height:2;
-margin-bottom:50px;
+.brandMark::before{
+  content:"";
+
+  position:absolute;
+
+  width:10px;
+  height:10px;
+
+  left:7px;
+  top:7px;
+
+  border-radius:50%;
+
+  background:#ffffff;
+}
+
+.brandMark::after{
+  content:"";
+
+  position:absolute;
+
+  right:7px;
+  bottom:7px;
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#60a5fa;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+
+  padding:8px 11px;
+
+  border:1px solid var(--line);
+  border-radius:999px;
+
+  background:rgba(255,255,255,.72);
+
+  color:#667085;
+
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.statusDot{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  box-shadow:
+    0 0 0 4px rgba(22,163,74,.10);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  position:relative;
+
+  padding-bottom:24px;
+}
+
+.heroBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+
+  padding:9px 13px;
+
+  margin-bottom:22px;
+
+  border-radius:999px;
+
+  background:var(--blue-soft);
+
+  color:var(--blue-dark);
+
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+
+.heroBadgeIcon{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+  background:var(--blue);
+}
+
+.heroTitle{
+  margin:0;
+
+  font-size:
+    clamp(48px, 11vw, 78px);
+
+  line-height:.98;
+
+  font-weight:900;
+
+  letter-spacing:-.055em;
+}
+
+.heroTitleSmall{
+  display:block;
+
+  margin-top:13px;
+
+  color:var(--blue);
+
+  font-size:.36em;
+  line-height:1;
+
+  letter-spacing:.03em;
+  font-weight:900;
+}
+
+.heroCopy{
+  margin:
+    32px 0 0;
+
+  font-size:
+    clamp(25px, 6.8vw, 39px);
+
+  line-height:1.35;
+
+  font-weight:850;
+
+  letter-spacing:-.035em;
+}
+
+.heroCopyAccent{
+  position:relative;
+  display:inline-block;
+}
+
+.heroCopyAccent::after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  right:0;
+  bottom:1px;
+
+  height:7px;
+
+  border-radius:999px;
+
+  background:rgba(96,165,250,.22);
+
+  z-index:-1;
+}
+
+.heroLead{
+  margin:
+    24px 0 0;
+
+  max-width:570px;
+
+  color:var(--text-soft);
+
+  font-size:16px;
+
+  line-height:1.95;
+
+  font-weight:500;
+
+  letter-spacing:.01em;
+}
+
+
+/* =========================================================
+   HERO CHIPS
+========================================================= */
+
+.heroChips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+
+  margin-top:27px;
+}
+
+.heroChip{
+  padding:10px 13px;
+
+  border:1px solid var(--line);
+  border-radius:999px;
+
+  background:rgba(255,255,255,.74);
+
+  color:#4b5563;
+
+  font-size:12px;
+  font-weight:700;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.ctaArea{
+  margin-top:38px;
 }
 
 .cta{
-display:block;
-text-align:center;
-padding:24px 20px;
-border:1.5px solid #111;
-text-decoration:none;
-color:#111;
-font-size:15px;
-letter-spacing:.18em;
-transition:.25s;
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  min-height:70px;
+
+  padding:
+    10px
+    11px
+    10px
+    23px;
+
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #111827 0%,
+      #172033 100%
+    );
+
+  color:#fff;
+
+  text-decoration:none;
+
+  box-shadow:
+    0 18px 42px rgba(17,24,39,.17);
+
+  overflow:hidden;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
 }
 
-.cta:hover{
-background:#111;
-color:#fff;
+.cta::before{
+  content:"";
+
+  position:absolute;
+
+  width:160px;
+  height:160px;
+
+  top:-105px;
+  right:-40px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(96,165,250,.34),
+      rgba(96,165,250,0) 67%
+    );
 }
 
-.meta{
-margin-top:18px;
-text-align:center;
-font-size:13px;
-letter-spacing:.14em;
-color:#9a9a9a;
+.cta:active{
+  transform:scale(.985);
 }
 
-.divider{
-height:1px;
-background:var(--line);
-margin:70px 0 60px;
+.ctaText{
+  position:relative;
+
+  z-index:1;
+
+  display:flex;
+  flex-direction:column;
+  gap:3px;
 }
 
-.section-title{
-font-size:12px;
-letter-spacing:.4em;
-color:#777;
-margin-bottom:24px;
+.ctaMain{
+  font-size:16px;
+  font-weight:850;
+
+  letter-spacing:.02em;
 }
 
-.card{
-background:#fff;
-padding:34px;
-border:1px solid #eee;
-margin-bottom:40px;
-line-height:2;
-font-size:16px;
+.ctaSub{
+  color:rgba(255,255,255,.62);
+
+  font-size:10px;
+  font-weight:600;
+
+  letter-spacing:.06em;
 }
 
-.footer-note{
-margin-top:90px;
-margin-bottom:22px;
-font-size:14px;
-letter-spacing:.1em;
-color:#777;
+.ctaArrow{
+  position:relative;
+  z-index:1;
+
+  display:grid;
+  place-items:center;
+
+  flex:0 0 auto;
+
+  width:49px;
+  height:49px;
+
+  border-radius:16px;
+
+  background:#ffffff;
+
+  color:#111827;
+
+  font-size:22px;
+  line-height:1;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.12);
+}
+
+.ctaMeta{
+  margin-top:13px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-size:11px;
+  font-weight:600;
+
+  letter-spacing:.04em;
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.heroVisual{
+  position:relative;
+
+  margin-top:54px;
+
+  padding:28px;
+
+  border:1px solid rgba(255,255,255,.75);
+
+  border-radius:var(--radius-xl);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.92),
+      rgba(244,248,255,.92)
+    );
+
+  box-shadow:var(--shadow);
+
+  overflow:hidden;
+}
+
+.heroVisual::before{
+  content:"";
+
+  position:absolute;
+
+  width:210px;
+  height:210px;
+
+  right:-90px;
+  top:-90px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(96,165,250,.17),
+      transparent 68%
+    );
+}
+
+.liveLabel{
+  position:relative;
+  z-index:1;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  margin-bottom:28px;
+
+  color:#6b7280;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:.12em;
+}
+
+.liveDot{
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#22c55e;
+
+  box-shadow:
+    0 0 0 5px rgba(34,197,94,.10);
+}
+
+.visualMessage{
+  position:relative;
+  z-index:1;
+
+  margin:0;
+
+  font-size:
+    clamp(25px, 6.4vw, 36px);
+
+  line-height:1.45;
+
+  font-weight:900;
+
+  letter-spacing:-.035em;
+}
+
+.visualMessage strong{
+  color:var(--blue);
+}
+
+.visualMini{
+  position:relative;
+  z-index:1;
+
+  margin-top:25px;
+
+  display:grid;
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap:9px;
+}
+
+.visualMiniItem{
+  padding:
+    13px 8px;
+
+  border-radius:15px;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  text-align:center;
+}
+
+.visualMiniTop{
+  display:block;
+
+  margin-bottom:4px;
+
+  color:var(--muted);
+
+  font-size:9px;
+  font-weight:800;
+
+  letter-spacing:.08em;
+}
+
+.visualMiniBottom{
+  display:block;
+
+  color:#111827;
+
+  font-size:12px;
+  font-weight:850;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+  margin-top:86px;
+}
+
+.sectionHead{
+  margin-bottom:26px;
+}
+
+.sectionLabel{
+  margin-bottom:11px;
+
+  color:var(--blue);
+
+  font-size:10px;
+  font-weight:850;
+
+  letter-spacing:.16em;
+}
+
+.sectionTitle{
+  margin:0;
+
+  font-size:
+    clamp(30px, 7vw, 42px);
+
+  line-height:1.25;
+
+  font-weight:900;
+
+  letter-spacing:-.035em;
+}
+
+.sectionText{
+  margin:
+    17px 0 0;
+
+  color:var(--text-soft);
+
+  font-size:15px;
+  line-height:1.9;
+}
+
+
+/* =========================================================
+   POINT CARDS
+========================================================= */
+
+.pointGrid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
+  gap:12px;
+}
+
+.pointCard{
+  min-height:190px;
+
+  padding:22px;
+
+  border-radius:var(--radius-lg);
+
+  background:var(--surface);
+
+  border:1px solid var(--line);
+
+  box-shadow:var(--shadow-soft);
+}
+
+.pointIcon{
+  display:grid;
+  place-items:center;
+
+  width:44px;
+  height:44px;
+
+  margin-bottom:23px;
+
+  border-radius:15px;
+
+  background:var(--blue-soft);
+
+  color:var(--blue);
+
+  font-size:19px;
+  font-weight:900;
+}
+
+.pointTitle{
+  margin:0 0 10px;
+
+  font-size:17px;
+  line-height:1.35;
+
+  font-weight:850;
+
+  letter-spacing:-.02em;
+}
+
+.pointText{
+  margin:0;
+
+  color:#687386;
+
+  font-size:12px;
+  line-height:1.8;
+}
+
+
+/* =========================================================
+   MESSAGE CARD
+========================================================= */
+
+.messageCard{
+  position:relative;
+
+  padding:
+    38px
+    28px;
+
+  border-radius:var(--radius-xl);
+
+  background:
+    linear-gradient(
+      145deg,
+      #172033,
+      #0e1421
+    );
+
+  color:#fff;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 22px 50px rgba(17,24,39,.16);
+}
+
+.messageCard::before{
+  content:"";
+
+  position:absolute;
+
+  width:230px;
+  height:230px;
+
+  border-radius:50%;
+
+  right:-105px;
+  top:-100px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59,130,246,.34),
+      transparent 67%
+    );
+}
+
+.messageQuote{
+  position:relative;
+  z-index:1;
+
+  margin:0;
+
+  font-size:
+    clamp(28px,7vw,42px);
+
+  line-height:1.4;
+
+  font-weight:900;
+
+  letter-spacing:-.04em;
+}
+
+.messageQuoteBlue{
+  color:#7db2ff;
+}
+
+.messageSmall{
+  position:relative;
+  z-index:1;
+
+  margin:
+    25px 0 0;
+
+  color:rgba(255,255,255,.65);
+
+  font-size:13px;
+  line-height:1.9;
+}
+
+
+/* =========================================================
+   FLOW
+========================================================= */
+
+.flow{
+  display:flex;
+  flex-direction:column;
+
+  gap:10px;
+}
+
+.flowItem{
+  display:flex;
+  align-items:center;
+  gap:17px;
+
+  padding:
+    19px
+    20px;
+
+  border:1px solid var(--line);
+  border-radius:20px;
+
+  background:rgba(255,255,255,.82);
+}
+
+.flowNumber{
+  display:grid;
+  place-items:center;
+
+  flex:0 0 auto;
+
+  width:42px;
+  height:42px;
+
+  border-radius:14px;
+
+  background:#111827;
+
+  color:#fff;
+
+  font-size:11px;
+  font-weight:850;
+}
+
+.flowBody{
+  min-width:0;
+}
+
+.flowTitle{
+  margin:0;
+
+  font-size:14px;
+  font-weight:850;
+}
+
+.flowText{
+  margin:
+    4px 0 0;
+
+  color:#7b8493;
+
+  font-size:11px;
+  line-height:1.55;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.finalBox{
+  position:relative;
+
+  margin-top:90px;
+
+  padding:
+    40px
+    26px
+    28px;
+
+  border-radius:30px;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  box-shadow:var(--shadow);
+
+  text-align:center;
+
+  overflow:hidden;
+}
+
+.finalBox::before{
+  content:"";
+
+  position:absolute;
+
+  width:240px;
+  height:240px;
+
+  left:50%;
+  top:-180px;
+
+  transform:translateX(-50%);
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59,130,246,.14),
+      transparent 68%
+    );
+}
+
+.finalEyebrow{
+  position:relative;
+
+  color:var(--blue);
+
+  font-size:10px;
+  font-weight:850;
+
+  letter-spacing:.16em;
+}
+
+.finalTitle{
+  position:relative;
+
+  margin:
+    15px 0 0;
+
+  font-size:
+    clamp(29px, 7.4vw, 42px);
+
+  line-height:1.35;
+
+  font-weight:900;
+
+  letter-spacing:-.04em;
+}
+
+.finalText{
+  position:relative;
+
+  margin:
+    16px auto 0;
+
+  max-width:460px;
+
+  color:#687386;
+
+  font-size:13px;
+  line-height:1.85;
+}
+
+.finalButton{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+
+  margin-top:26px;
+
+  min-height:60px;
+
+  border-radius:18px;
+
+  background:var(--blue);
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:14px;
+  font-weight:850;
+
+  box-shadow:
+    0 13px 30px rgba(37,99,235,.24);
+
+  transition:
+    transform .18s ease,
+    background .18s ease;
+}
+
+.finalButton:active{
+  transform:scale(.985);
+  background:var(--blue-dark);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+  margin-top:62px;
+
+  padding-top:24px;
+
+  border-top:1px solid var(--line);
+}
+
+.footerBrand{
+  font-size:13px;
+  font-weight:850;
+}
+
+.footerText{
+  margin-top:9px;
+
+  color:#9aa2af;
+
+  font-size:10px;
+  line-height:1.8;
 }
 
 .disclaimer{
-font-size:12px;
-letter-spacing:.08em;
-color:#9a9a9a;
-line-height:1.8;
+  margin-top:24px;
+
+  color:#a4abb5;
+
+  font-size:10px;
+  line-height:1.8;
 }
 
-@media(max-width:420px){
-h1{font-size:42px;}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+
+  transition:
+    opacity .65s cubic-bezier(.22,.8,.2,1),
+    transform .65s cubic-bezier(.22,.8,.2,1);
 }
+
+.reveal.isVisible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(min-width:700px){
+
+  .container{
+    padding-left:28px;
+    padding-right:28px;
+  }
+
+  .pointCard{
+    padding:27px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:520px){
+
+  .container{
+    padding-left:17px;
+    padding-right:17px;
+  }
+
+  .topbar{
+    margin-bottom:46px;
+  }
+
+  .status{
+    font-size:9px;
+    padding:7px 9px;
+  }
+
+  .heroLead br{
+    display:none;
+  }
+
+  .heroVisual{
+    padding:23px 19px;
+  }
+
+  .pointGrid{
+    grid-template-columns:1fr;
+  }
+
+  .pointCard{
+    min-height:auto;
+  }
+
+  .visualMini{
+    gap:6px;
+  }
+
+  .visualMiniItem{
+    padding:
+      12px
+      4px;
+  }
+
+  .visualMiniBottom{
+    font-size:11px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+
+  .cta,
+  .finalButton{
+    transition:none;
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
-<div class="container">
 
-<div class="eyebrow">BOAT RACE ANALYSIS LAB.</div>
+<div class="page">
 
-<h1>
-大学院(200%)｜競艇<br>
-解析
-</h1>
+  <main class="container">
 
-<div class="sub">偶然ではなく、再現性。</div>
 
-<div class="lead">
-展開・モーター・コースデータから<br>
-「勝ち筋だけ」を抽出する。
+    <!-- =====================================================
+         TOP
+    ====================================================== -->
+
+    <header class="topbar">
+
+      <div class="brand">
+
+        <div
+          class="brandMark"
+          aria-hidden="true"
+        ></div>
+
+        <span>大学院(200%)</span>
+
+      </div>
+
+
+      <div class="status">
+
+        <span
+          class="statusDot"
+          aria-hidden="true"
+        ></span>
+
+        OPEN CHAT
+
+      </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero reveal">
+
+      <div class="heroBadge">
+
+        <span
+          class="heroBadgeIcon"
+          aria-hidden="true"
+        ></span>
+
+        競艇好きが集まる場所
+
+      </div>
+
+
+      <h1 class="heroTitle">
+
+        大学院
+
+        <span class="heroTitleSmall">
+          200%
+        </span>
+
+      </h1>
+
+
+      <div class="heroCopy">
+
+        競艇、
+        <span class="heroCopyAccent">
+          もっと気楽に
+        </span>
+        <br>
+
+        楽しもう。
+
+      </div>
+
+
+      <p class="heroLead">
+
+        見るだけでも。<br>
+        話すだけでも。<br>
+        一緒に予想して盛り上がるのも。
+
+        <br><br>
+
+        大学院(200%)は、
+        競艇好きなら誰でも気軽に参加できる
+        オープンチャットです。
+
+      </p>
+
+
+      <div class="heroChips">
+
+        <div class="heroChip">
+          参加無料
+        </div>
+
+        <div class="heroChip">
+          匿名OK
+        </div>
+
+        <div class="heroChip">
+          見るだけOK
+        </div>
+
+        <div class="heroChip">
+          初心者歓迎
+        </div>
+
+      </div>
+
+
+      <div class="ctaArea">
+
+        <a
+          class="cta"
+          href="https://line.me/ti/g2/CUe1ttnHasebosnZSBAFF0NIk2g6tc5Q_zKSJw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <span class="ctaText">
+
+            <span class="ctaMain">
+              無料で参加する
+            </span>
+
+            <span class="ctaSub">
+              LINE OPENCHAT
+            </span>
+
+          </span>
+
+
+          <span
+            class="ctaArrow"
+            aria-hidden="true"
+          >
+            →
+          </span>
+
+        </a>
+
+
+        <div class="ctaMeta">
+          気になったら、まず覗くだけでもOK。
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         VISUAL MESSAGE
+    ====================================================== -->
+
+    <section class="heroVisual reveal">
+
+      <div class="liveLabel">
+
+        <span
+          class="liveDot"
+          aria-hidden="true"
+        ></span>
+
+        TODAY'S OPEN CHAT
+
+      </div>
+
+
+      <p class="visualMessage">
+
+        今日もどこかで、<br>
+
+        <strong>
+          「そこ差せ！」
+        </strong>
+
+        <br>
+
+        と叫んでます。
+
+      </p>
+
+
+      <div class="visualMini">
+
+        <div class="visualMiniItem">
+
+          <span class="visualMiniTop">
+            STYLE
+          </span>
+
+          <span class="visualMiniBottom">
+            自由
+          </span>
+
+        </div>
+
+
+        <div class="visualMiniItem">
+
+          <span class="visualMiniTop">
+            ENTRY
+          </span>
+
+          <span class="visualMiniBottom">
+            無料
+          </span>
+
+        </div>
+
+
+        <div class="visualMiniItem">
+
+          <span class="visualMiniTop">
+            BEGINNER
+          </span>
+
+          <span class="visualMiniBottom">
+            歓迎
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WHAT
+    ====================================================== -->
+
+    <section class="section reveal">
+
+      <div class="sectionHead">
+
+        <div class="sectionLabel">
+          ABOUT US
+        </div>
+
+
+        <h2 class="sectionTitle">
+          こんな場所です。
+        </h2>
+
+
+        <p class="sectionText">
+
+          難しいルールはありません。
+
+          <br>
+
+          競艇が好き。
+          ちょっと興味がある。
+
+          <br>
+
+          それくらいで十分です。
+
+        </p>
+
+      </div>
+
+
+      <div class="pointGrid">
+
+
+        <article class="pointCard">
+
+          <div class="pointIcon">
+            01
+          </div>
+
+          <h3 class="pointTitle">
+            見てるだけでもOK
+          </h3>
+
+          <p class="pointText">
+            最初から無理に会話へ入る必要はありません。
+            みんなの予想やレースの話を見るだけでも大丈夫です。
+          </p>
+
+        </article>
+
+
+        <article class="pointCard">
+
+          <div class="pointIcon">
+            02
+          </div>
+
+          <h3 class="pointTitle">
+            自由に話せる
+          </h3>
+
+          <p class="pointText">
+            狙っているレース、気になる選手、結果の感想。
+            競艇の話なら気軽に参加できます。
+          </p>
+
+        </article>
+
+
+        <article class="pointCard">
+
+          <div class="pointIcon">
+            03
+          </div>
+
+          <h3 class="pointTitle">
+            初心者も歓迎
+          </h3>
+
+          <p class="pointText">
+            詳しくないから入りにくい、
+            という雰囲気にはしたくありません。
+            競艇を楽しみたい人なら歓迎です。
+          </p>
+
+        </article>
+
+
+        <article class="pointCard">
+
+          <div class="pointIcon">
+            04
+          </div>
+
+          <h3 class="pointTitle">
+            自分のペースで
+          </h3>
+
+          <p class="pointText">
+            毎日参加しても、好きなレースの時だけでも。
+            それぞれの距離感で楽しめる場所を目指しています。
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MESSAGE
+    ====================================================== -->
+
+    <section class="section reveal">
+
+      <div class="messageCard">
+
+        <p class="messageQuote">
+
+          当たったら、<br>
+
+          <span class="messageQuoteBlue">
+            みんなで喜ぶ。
+          </span>
+
+          <br><br>
+
+          外れたら、<br>
+          また次のレース。
+
+        </p>
+
+
+        <p class="messageSmall">
+
+          ガチガチの予想サロンではありません。
+
+          <br>
+
+          競艇を通じて、
+          一緒に盛り上がれる場所でありたいと思っています。
+
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         HOW TO
+    ====================================================== -->
+
+    <section class="section reveal">
+
+      <div class="sectionHead">
+
+        <div class="sectionLabel">
+          JOIN
+        </div>
+
+
+        <h2 class="sectionTitle">
+          参加は簡単。
+        </h2>
+
+
+        <p class="sectionText">
+          LINEのオープンチャットなので、
+          普段のLINE名とは別の名前でも参加できます。
+        </p>
+
+      </div>
+
+
+      <div class="flow">
+
+
+        <div class="flowItem">
+
+          <div class="flowNumber">
+            01
+          </div>
+
+
+          <div class="flowBody">
+
+            <p class="flowTitle">
+              参加ボタンをタップ
+            </p>
+
+            <p class="flowText">
+              このページのボタンからLINEへ移動します。
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="flowItem">
+
+          <div class="flowNumber">
+            02
+          </div>
+
+
+          <div class="flowBody">
+
+            <p class="flowTitle">
+              好きな名前で参加
+            </p>
+
+            <p class="flowText">
+              オープンチャット用のプロフィールを設定できます。
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="flowItem">
+
+          <div class="flowNumber">
+            03
+          </div>
+
+
+          <div class="flowBody">
+
+            <p class="flowTitle">
+              あとは自由に楽しむだけ
+            </p>
+
+            <p class="flowText">
+              見るだけでも、話しても、自分のペースでOKです。
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FINAL CTA
+    ====================================================== -->
+
+    <section class="finalBox reveal">
+
+      <div class="finalEyebrow">
+        UNIVERSITY 200%
+      </div>
+
+
+      <h2 class="finalTitle">
+
+        次のレース、<br>
+        一緒に楽しみませんか。
+
+      </h2>
+
+
+      <p class="finalText">
+
+        入ってみて合わなければ、
+        無理に居続ける必要もありません。
+
+        <br>
+
+        まずは気軽に覗いてみてください。
+
+      </p>
+
+
+      <a
+        class="finalButton"
+        href="https://line.me/ti/g2/CUe1ttnHasebosnZSBAFF0NIk2g6tc5Q_zKSJw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        オープンチャットに参加する
+
+        <span aria-hidden="true">
+          →
+        </span>
+
+      </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+      <div class="footerBrand">
+        大学院(200%)
+      </div>
+
+
+      <div class="footerText">
+        BOAT RACE COMMUNITY
+      </div>
+
+
+      <div class="disclaimer">
+
+        ※舟券の購入はご自身の判断と責任でお願いいたします。<br>
+        ※当ページは的中や利益を保証するものではありません。
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
 </div>
 
-<a class="cta"
-href="https://line.me/ti/g2/CUe1ttnHasebosnZSBAFF0NIk2g6tc5Q_zKSJw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
-target="_blank" rel="noopener">
-オープンチャットへ参加する
-</a>
 
-<div class="meta">
-参加無料 ／ 匿名OK ／ 通知OFF推奨
-</div>
 
-<div class="divider"></div>
+<script>
 
-<div class="section-title">SYLLABUS</div>
-<div class="card">
-展開モデルの分解。<br>
-モーター性能の分析。<br>
-コース期待値の再構築。<br>
-資金配分の最適化。
-</div>
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-<div class="section-title">METHODOLOGY</div>
-<div class="card">
-直前気配に依存しない。<br>
-説明できる舟券だけを残す。<br>
-外れたレースほど検証する。<br>
-感覚ではなく再現性を優先。
-</div>
+(() => {
 
-<div class="footer-note">
-短期の当たりより、長期の優位性。
-</div>
+  const targets =
+    document.querySelectorAll(".reveal");
 
-<div class="disclaimer">
-※最終的な判断はご自身の責任にてお願いいたします。
-</div>
 
-</div>
+  if(
+    !("IntersectionObserver" in window)
+  ){
+
+    targets.forEach((el) => {
+      el.classList.add("isVisible");
+    });
+
+    return;
+  }
+
+
+  const observer =
+    new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if(
+            entry.isIntersecting
+          ){
+
+            entry.target
+              .classList
+              .add("isVisible");
+
+            observer
+              .unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold:0.10,
+        rootMargin:"0px 0px -35px 0px"
+      }
+
+    );
+
+
+  targets.forEach((el) => {
+    observer.observe(el);
+  });
+
+})();
+
+</script>
+
 </body>
 </html>
